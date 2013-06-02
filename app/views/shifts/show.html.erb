@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @shift.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @shift.description %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @shift.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @shift.end %>
+</p>
+
+<p>
+  <b>In series:</b>
+  <%= @shift.in_series %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @shift.address %>
+</p>
+
+<p>
+  <b>Vol need:</b>
+  <%= @shift.vol_need %>
+</p>
+
+
+<%= link_to 'Edit', edit_shift_path(@shift) %> |
+<%= link_to 'Back', shifts_path %>
