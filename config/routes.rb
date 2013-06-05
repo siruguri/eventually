@@ -1,6 +1,9 @@
 App::Application.routes.draw do
-  resources :roles
+  resources :organizations
 
+
+  root :to => "events#index"
+  resources :roles
 
   resources :authorizations
 

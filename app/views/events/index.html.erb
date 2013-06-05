@@ -2,6 +2,13 @@
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>In series</th>
+    <th>Address</th>
+    <th>Vol need</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +16,13 @@
 
 <% @events.each do |event| %>
   <tr>
+    <td><%= event.name %></td>
+    <td><%= event.description %></td>
+    <td><%= event.start %></td>
+    <td><%= event.end %></td>
+    <td><%= event.in_series %></td>
+    <td><%= event.address %></td>
+    <td><%= event.vol_need %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
