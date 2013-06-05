@@ -7,16 +7,15 @@ App::Application.routes.draw do
 
   resources :authorizations
 
-
   devise_for :users
 
   resources :users
-
-
   resources :shifts
-
-
   resources :events
+
+  namespace :api, defaults: {format: 'json'} do
+    resources :events
+  end
 
 
   # The priority is based upon order of creation:
