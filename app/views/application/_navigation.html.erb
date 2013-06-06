@@ -1,0 +1,30 @@
+<!-- stuff at the left -->
+<ul class="nav">
+
+  <li>
+    <%= link_to "Orgs", organizations_path %>
+  </li>
+  <li>
+    <%= link_to "Events", events_path %>
+  </li>
+</ul>
+
+<!-- stuff at the right -->
+
+<span style="float:right">
+  <ul class="nav">
+    <% if user_signed_in? %>
+    <li>
+      <%= current_user.name %> (<%=link_to 'Logout', destroy_user_session_path, :method=>'delete' %>, 
+      <%= link_to 'Edit account', edit_user_registration_path %>)
+    </li>
+    <% else %>
+    <li>
+      <%= link_to 'Login', new_user_session_path %>
+    </li>
+    <li>
+      <%= link_to 'Sign up', new_user_registration_path %>
+    </li>
+    <% end %>
+  </ul>
+</span>
