@@ -1,0 +1,16 @@
+#implement Teams
+rails g scaffold Team name:string organization_id:
+#implement Person (basic crm, unfortunately)
+rails g scaffold Person name:string online_uris:text 
+
+#Enrolment to match Teams to Persons, and to give a Person a title in the team
+rails g model Enrolment team:references person:references teamrole:string
+
+#Add org
+
+# associations
+2. Team belongs_to Organization
+4. Person has_many Teams through Enrolments
+5. Team has_many Persons through Enrolments
+
+1. Event has_one Team

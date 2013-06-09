@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+div.fieldinline {
+    display:inline
+}
+
 div.flashmesgs { 
   background-color: pink;
   width: 250px;
@@ -23,9 +27,10 @@ div.flashmesgs {
   padding-right: 8px;
 }
 ul.nav {
-  list-style: none;
-  margin: 0 0 2em;
-  padding: 0;
+    display: inline;
+    list-style: none;
+    margin: 0 0 2em;
+    padding: 0;
 }
 ul.nav li {
   display: inline;

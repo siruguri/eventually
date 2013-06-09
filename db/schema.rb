@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605035835) do
+ActiveRecord::Schema.define(:version => 20130609164302) do
 
   create_table "authorizations", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20130605035835) do
 
   add_index "authorizations", ["role_id"], :name => "index_authorizations_on_role_id"
   add_index "authorizations", ["user_id"], :name => "index_authorizations_on_user_id"
+
+  create_table "enrolments", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "person_id"
+    t.string   "teamrole"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "enrolments", ["person_id"], :name => "index_enrolments_on_person_id"
+  add_index "enrolments", ["team_id"], :name => "index_enrolments_on_team_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -34,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130605035835) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "organization_id"
+    t.integer  "team_id"
   end
 
   add_index "events", ["organization_id"], :name => "index_events_on_organization_id"
@@ -42,6 +54,13 @@ ActiveRecord::Schema.define(:version => 20130605035835) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.text     "online_uris"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -60,6 +79,13 @@ ActiveRecord::Schema.define(:version => 20130605035835) do
     t.integer  "vol_need"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.integer  "organization_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

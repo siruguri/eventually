@@ -40,7 +40,17 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+
+    team_params={}
+    team_params[:name] = params[:event][:team_name] || "Placeholder team for #{params[:event][:name]}"
+    team_params[:organization_id] = params[:event][:organization_id] || 1
+
+    t=Team.new(team_params)
+    params[:event].delete :team_name
+    
     @event = Event.new(params[:event])
+    t.event=@event
+    t.save
 
     respond_to do |format|
       if @event.save

@@ -40,9 +40,14 @@
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>
+
   <div class="field">
-    <%= f.label :vol_need %><br />
-    <%= f.number_field :vol_need %>
+    <div class="fieldinline">
+      <%= f.label :vol_need %> <%= f.number_field :vol_need %>
+    </div>
+    <div class="fieldinline">
+      <%= f.label :team_name %> <%= f.text_field :team_name %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>

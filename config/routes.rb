@@ -1,4 +1,13 @@
 App::Application.routes.draw do
+  resources :team_roles
+
+
+  resources :people
+
+
+  resources :teams
+
+
   resources :organizations
 
 
