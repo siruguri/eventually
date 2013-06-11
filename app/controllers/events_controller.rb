@@ -1,8 +1,12 @@
 class EventsController < ApplicationController
+
+  before_filter :authenticate_user!
+  load_and_authorize_resource except: :create
+
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.where(:organization_id => current_user.organization_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,17 +44,25 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    owning_org_id = current_user.organization_id
 
-    team_params={}
-    team_params[:name] = params[:event][:team_name] || "Placeholder team for #{params[:event][:name]}"
-    team_params[:organization_id] = params[:event][:organization_id] || 1
+# put this back in when we allow team creation during event creation
+#    team_params={}
+#    team_params[:name] = params[:event][:team_name] || "Placeholder team for #{params[:event][:name]}"
+#    team_params[:organization_id] = owning_org.id
 
-    t=Team.new(team_params)
-    params[:event].delete :team_name
-    
+    t=Team.where(id: params[:event][:team_id])
+    Rails.logger.info("Got team #{t[0].name}")
+
+    params[:event].delete :team_id
+
     @event = Event.new(params[:event])
-    t.event=@event
-    t.save
+    @event.organization_id=owning_org_id
+
+    t[0].event=@event
+    t[0].save
+
+    @event.team = t[0]
 
     respond_to do |format|
       if @event.save

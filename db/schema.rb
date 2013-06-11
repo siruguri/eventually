@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609164302) do
+ActiveRecord::Schema.define(:version => 20130611033513) do
 
   create_table "authorizations", :force => true do |t|
     t.integer  "user_id"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(:version => 20130609164302) do
 
   add_index "events", ["organization_id"], :name => "index_events_on_organization_id"
 
+  create_table "org_teams", :force => true do |t|
+    t.integer  "organization_id"
+    t.integer  "team_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "org_teams", ["organization_id"], :name => "index_org_teams_on_organization_id"
+  add_index "org_teams", ["team_id"], :name => "index_org_teams_on_team_id"
+
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -86,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130609164302) do
     t.integer  "organization_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "event_id"
   end
 
   create_table "users", :force => true do |t|
@@ -102,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20130609164302) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
+    t.integer  "organization_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

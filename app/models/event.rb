@@ -5,5 +5,6 @@ class Event < ActiveRecord::Base
 
   validates :name, :start, :end, presence: :true
 
+  has_one :team
   belongs_to :organization
 end

@@ -13,4 +13,6 @@ rails g model Enrolment team:references person:references teamrole:string
 4. Person has_many Teams through Enrolments
 5. Team has_many Persons through Enrolments
 
+# more associations
 1. Event has_one Team
+3. 

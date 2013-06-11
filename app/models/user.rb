@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :roles, :through => :authorizations
 
+  belongs_to :organization
+
 
   def is(rolename)
     roles = self.roles.map { |obj| obj.name }

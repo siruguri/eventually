@@ -1,8 +1,12 @@
 class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
+
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   def index
-    @teams = Team.all
+    @teams = Team.where(:organization_id => current_user.organization_id)
 
     respond_to do |format|
       format.html # index.html.erb

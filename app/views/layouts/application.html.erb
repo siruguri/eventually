@@ -12,9 +12,15 @@
 <%= render "navigation" %>
 </div>
 
-<div class="errormesg"
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="errormesg">
+<% if !notice.nil? %>
+<p class="flash_notice"><%= notice %></p>
+<% end %>
+
+<% if !alert.nil? %>
+<p class="flash_alert"><%= alert %></p>
+<% end %>
+
 </div>
 
 <%= yield %>
