@@ -2,13 +2,17 @@
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Is Org Rep</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
+  <tr class = <%= cycle("even", "odd") %> >
+    <td><%= user.name %></td>
+    <td><%= if (@org_reps.include?(user)) then "yes" else "no" end %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

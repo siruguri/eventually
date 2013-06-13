@@ -15,6 +15,12 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <div class="field">
+    <%= f.label :organization %> <br />
+    <%= f.collection_select :organization_id, Organization.all, :id, :name, :prompt => true %>
+    Leave unselected for volunteers.
+  </div>
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

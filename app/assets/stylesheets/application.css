@@ -12,6 +12,19 @@
  *= require_tree .
  */
 
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr.odd {
+    background-color: #EAF2D3
+}
+tr.even {
+    background-color: #FFFFFF
+}
+
 div.fieldinline {
     display:inline
 }
