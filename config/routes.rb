@@ -1,4 +1,6 @@
 App::Application.routes.draw do
+  use_doorkeeper
+
   resources :team_roles
 
 

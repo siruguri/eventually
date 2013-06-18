@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   scope :org_reps, joins(:organization)
 
-  def is(rolename)
+  def is?(rolename)
     roles = self.roles.map { |obj| obj.name }
     roles.include? rolename
   end

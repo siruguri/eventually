@@ -1,13 +1,11 @@
 class EventsController < ApplicationController
 
   before_filter :authenticate_user!
-  load_and_authorize_resource except: :create
+  load_and_authorize_resource
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(:organization_id => current_user.organization_id)
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

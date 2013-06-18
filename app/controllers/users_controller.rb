@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   def index
-    @users = User.all
-    @org_reps = User.org_reps
+    @org_reps = @users.org_reps
+
+    # Org reps and volunteers are exclusive
+    @volunteers = @users-@org_reps
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,4 +86,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

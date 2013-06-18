@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
       redirect_to :back, :alert => exception.message
     else
       redirect_to root_url, :alert => exception.message
+      # render :text => "#{exception.message}"
     end
   end  
 end

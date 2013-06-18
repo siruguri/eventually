@@ -1,25 +1,25 @@
-<h1>Listing users</h1>
+<h1>Listing Users</h1>
 
+<h2>Reps</h2>
 <table>
   <tr>
     <th>Name</th>
-    <th>Is Org Rep</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
-
-<% @users.each do |user| %>
-  <tr class = <%= cycle("even", "odd") %> >
-    <td><%= user.name %></td>
-    <td><%= if (@org_reps.include?(user)) then "yes" else "no" end %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%= render collection: @org_reps, as: :user, partial: "user" %>
 </table>
 
-<br />
+<p />
+
+<h2>Volunteers</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+<%= render collection: @volunteers, as: :user, partial: "user" %>
+</table>
+
+<p />
 
 <%= link_to 'New User', new_user_path %>
