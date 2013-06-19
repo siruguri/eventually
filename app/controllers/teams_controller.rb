@@ -6,8 +6,6 @@ class TeamsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @teams = Team.where(:organization_id => current_user.organization_id)
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @teams }

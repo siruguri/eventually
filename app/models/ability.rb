@@ -11,6 +11,8 @@ class Ability
     else
       can :manage, Event, :organization_id => user.organization_id
       can :manage, User, :organization_id => user.organization_id
+      can :manage, Team, :organization_id => user.organization_id
+      can :manage, Organization, :id => user.organization_id
     end
 
     # Everyone can read everything

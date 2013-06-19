@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613051611) do
+ActiveRecord::Schema.define(:version => 20130619231457) do
 
   create_table "authorizations", :force => true do |t|
     t.integer  "user_id"
@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(:version => 20130613051611) do
 
   create_table "enrolments", :force => true do |t|
     t.integer  "team_id"
-    t.integer  "person_id"
+    t.integer  "user_id"
     t.string   "teamrole"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "enrolments", ["person_id"], :name => "index_enrolments_on_person_id"
   add_index "enrolments", ["team_id"], :name => "index_enrolments_on_team_id"
+  add_index "enrolments", ["user_id"], :name => "index_enrolments_on_person_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"

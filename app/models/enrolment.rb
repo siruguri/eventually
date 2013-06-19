@@ -1,6 +1,6 @@
 class Enrolment < ActiveRecord::Base
   belongs_to :team
-  belongs_to :person
+  belongs_to :user
 
-  attr_accessible :team_id, :person_id, :teamrole
+  attr_accessible :team_id, :user_id, :teamrole
 end

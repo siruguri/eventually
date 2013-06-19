@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   belongs_to :organization
 
-  scope :org_reps, joins(:organization)
+  scope :volunteers, joins(:teams)
 
   def is?(rolename)
     roles = self.roles.map { |obj| obj.name }

@@ -1,9 +1,10 @@
 class OrganizationsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @organizations }

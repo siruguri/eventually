@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @org_reps = @users.org_reps
+    @volunteers = @users.volunteers
 
     # Org reps and volunteers are exclusive
-    @volunteers = @users-@org_reps
+    @org_reps = @users-@volunteers
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,8 +1,0 @@
-class Person < ActiveRecord::Base
-  attr_accessible :enrolment_id, :name, :online_uris, :role_id
-
-  serialize :online_uris, Array
-
-  has_many :roles, through: :role_assignments
-  has_many :role_assignments
-end
