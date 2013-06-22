@@ -18,7 +18,7 @@ App::Application.routes.draw do
 
   resources :authorizations
 
-  devise_for :users
+  devise_for :users #, :controllers => {sessions: "MySessionsController"}
 
   resources :users
   resources :shifts

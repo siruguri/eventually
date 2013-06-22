@@ -18,7 +18,12 @@
   <div class="field">
     <%= f.label :organization %> <br />
     <%= f.collection_select :organization_id, Organization.all, :id, :name, :prompt => true %>
-    Leave unselected for volunteers.
+  </div>
+
+
+  <div class="field">
+    <%= f.label :is_volunteer, "Is Volunteer" %>
+    <%= check_box_tag "user[is_volunteer]" %>
   </div>
 
   <div><%= f.submit "Sign up" %></div>

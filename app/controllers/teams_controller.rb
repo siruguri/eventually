@@ -37,6 +37,7 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
+    @vols = User.volunteers.find_all_by_organization_id(@team.organization_id)
   end
 
   # POST /teams

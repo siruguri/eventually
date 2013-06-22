@@ -19,6 +19,10 @@
     <%= f.label :organization_id %><br />
     <%= f.number_field :organization_id %>
   </div>
+
+  <div>
+    <%= f.select(:user_ids, @vols.collect { |x| [x.name, x.id] }, prompt: true) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
