@@ -1,12 +1,15 @@
 module Api
-  class EventsController < ApplicationController
+  class EventsController < ApiController
 
+    doorkeeper_for :all
     respond_to :json
+    load_and_authorize_resource :event
 
     def index
-      respond_with Event.all
+      respond_with @events
     end
 
+    
   end
 end
 

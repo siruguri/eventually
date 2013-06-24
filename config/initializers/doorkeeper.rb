@@ -7,9 +7,11 @@ Doorkeeper.configure do
   resource_owner_authenticator do
     # Put your resource owner authentication logic here.
     # Example implementation:
-    User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
-  end
+    #User.find_by_id(session[:session_id]) || redirect_to(new_user_session_url)
 
+    current_user || redirect_to(new_user_session_url)
+  end
+  
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
   # admin_authenticator do
   #   # Put your admin authentication logic here.
@@ -22,7 +24,7 @@ Doorkeeper.configure do
 
   # Access token expiration time (default 2 hours).
   # If you want to disable expiration, set this to nil.
-  # access_token_expires_in 2.hours
+  access_token_expires_in nil
 
   # Issue access tokens with refresh token (disabled by default)
   # use_refresh_token
